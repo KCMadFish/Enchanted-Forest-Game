@@ -218,9 +218,56 @@ internal class Program
             /// Story 4 Options
             else if (choice == 4)
             {
-                Console.WriteLine("You chose option 4. Dang, eating sweets off the floor? I mean go off I guess! You follow the trail of candy, eating some while putting the rest in your pockets. \n The burst of sugar on your tongue urgest you forward. You must see how long this path really is.");
-            }   
+                Console.WriteLine("You chose option 4. Dang, eating sweets off the floor? I mean go off I guess! You follow the trail of candy, eating some while putting the rest in your pockets. \n The burst of sugar on your tongue urges you forward. You must see how long this path really is.");
+                Console.WriteLine("You continue following the trail, stuffing your pockets until they are bursting at the seams. Towards the end of the trail you come across an entire house of candy! \n What do you choose to do?");
+                Console.WriteLine("1. A house of candy! You must have a taste! You begin gnawing on a gingerbread windowsill. \n 2. Wow! You marvel at the unique house but decide you've had enough sugar for today. \n 3. You hear screams coming from inside the house. What is that? \n 4. You decide to knock on the door");
+                int Story4choice = 0;
+
+                while (Story4choice < 1 || Story4choice > 4)
+                {
+                    Console.WriteLine("Please choose an option, choose between 1 and 4:");
+
+                    string? input = Console.ReadLine();
+
+                    if (string.IsNullOrWhiteSpace(input))
+                    {
+                        Console.WriteLine("Please enter a number not a space!");
+                        continue;
+                    }
+
+                    if (!int.TryParse(input, out Story4choice))
+                    {
+                        Console.WriteLine("That's not valid! Please enter a whole number.");
+                        continue;
+                    }
+
+                    if (Story4choice < 1 || Story4choice > 4)
+                    {
+                        Console.WriteLine("Please stop trying to break me! Please enter a number between 1 and 4.");
+                    }
+                }
+                if (Story4choice == 1)
+                {
+                    Console.WriteLine("You chose option 1. As you are gnawing on the windowsill (I am trying really hard not to judge you rn), a witch pops her head outside the door! From inside comes a pleasing aroma. The witch smiles and offers you some stew. ");
+
+                    Console.WriteLine("Mmm, something savoury does sound great after all the candy. You go inside to enjoy a nice, hearty stew. \n While you are slurping up the last bit you notice something at the bottom of the bowl... \n A human toe?!?!? \n Enjoy the knowledge that you are now a cannibal");
+                }
+                else if (Story4choice == 2)
+                {
+                    Console.WriteLine("You chose option 2. You head home with pockets full of candy. Today was a good day for you!");
+                }
+                else if (Story4choice == 3)
+                {
+                    Console.WriteLine("You chose option 3. OMG! You burst into the house and see a witch holding two children hostage! You start fighting her off and knock her into a huge stew pot!");
+                    Console.WriteLine("The children thank you profusely. They mention they will follow their candy trail home. \n Wait didn't you eat that? \n  Oh dear! The children have no other way home. Guess you now have to look after them! \n Congratulations on becoming a parent!");
+                }
+                else if (Story4choice == 4)
+                {
+                    Console.WriteLine("Once you have finished knocking, a witch opens the door! She greets you and bids you enter. Once inside you notice a big pot in the middle of the kitchen! You ask her what she's making and she says stew but she is missing an ingredient");
+                    Console.WriteLine("Before you can think further, you are being pushed into the pot! \n You are now a stew ingredient. \n At least all the candy in your pockets is going to give the stew a nice taste");
+                }
+            }
         }
     }
-} 
+}
 

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Runtime.ConstrainedExecution;
+using System.Text;
 
 namespace StoryGame;
 /// introduction to the game
@@ -161,13 +162,65 @@ internal class Program
             /// Story 3 Options
             else if (choice == 3)
             {
-                Console.WriteLine("You chose option 3. This part of the forest is a little spooky, but you are brave! While walking you hear some whistling ahead.");
+                Console.WriteLine("You chose option 3. This part of the forest is a little spooky, but you are brave! While walking you hear some whistling ahead. You decide to follow it and come across a girl in a red hood. She says she is off to her grandmother's house. You notice she keeps looking over her shoulder.");
+                Console.WriteLine("What do you choose to do? \n 1.You offer to walk with her to her grandmother's house \n 2. You ask her why she keeps looking over her shoulder \n 3. You decide to part ways with her. \n 4. You decide to look around and try to spot what she is looking for.");
+
+                int Story3choice = 0;
+
+                while (Story3choice < 1 || Story3choice > 4)
+                {
+                    Console.WriteLine("Please choose an option, choose between 1 and 4:");
+
+                    string? input = Console.ReadLine();
+
+                    if (string.IsNullOrWhiteSpace(input))
+                    {
+                        Console.WriteLine("Please enter a number not a space!");
+                        continue;
+                    }
+
+                    if (!int.TryParse(input, out Story3choice))
+                    {
+                        Console.WriteLine("That's not valid! Please enter a whole number.");
+                        continue;
+                    }
+
+                    if (Story3choice < 1 || Story3choice > 4)
+                    {
+                        Console.WriteLine("Please stop trying to break me! Please enter a number between 1 and 4.");
+                    }
+                }
+
+                if (Story3choice == 1)
+                {
+                    Console.WriteLine("You chose option 1. You walk with her to her grandmother's house. Once you're there, you sit down and have a nice cup of tea. Her grandmother has strangely long ears and a snout, but who are you to judge?");
+
+                    Console.WriteLine("You go home and see her and her grandmother on the news that night. They were eaten by a wolf!");
+                }
+                else if (Story3choice == 2)
+                {
+                    Console.WriteLine("You chose option 2. She explains that she is waiting on a friend. You decide to sit down and wait with her, and she shares some muffins from her basket.");
+
+                    Console.WriteLine("Just when you decide it's time to get up and go, her friend joins her! He apologises for his lateness. He was dealing with his cousin, who was trying to blow a house down? You decide you better be on your way home before his cousin decides to blow your house down!");
+                }
+                else if (Story3choice == 3)
+                {
+                    Console.WriteLine("You chose option 3. You part ways with her. As you explore by yourself, you come across a lovely, little home. Inside is an old lady. This must be her grandmother! She invites you in for tea but says she has no grandchildren. However, there have been reports of a little girl in a red hood who is there one second and gone the next. Spooky!");
+                }
+                else if (Story3choice == 4)
+                {
+                    Console.WriteLine("You chose option 4. You turn your head and scan the forest around you, determined to find out what she is looking for. As your eyes skim the forest, you see another set peeking out at you. \n AH! \n It's a wolf!");
+
+                    Console.WriteLine("You scream, she screams, the wolf screams. \n The wolf gives you an incredulous look and continues on his way. \n Wow, dramatic much?");
+                }
             }
+
             /// Story 4 Options
             else if (choice == 4)
             {
-                Console.WriteLine("You chose option 4. Dang, eating sweets off the floor? I mean go off I guess! You follow the trail of candy, eating some while putting the rest in your pockets. The burst of sugar on your tongue fuels you to continue on.");
-            }
-            }
+                Console.WriteLine("You chose option 4. Dang, eating sweets off the floor? I mean go off I guess! You follow the trail of candy, eating some while putting the rest in your pockets. \n The burst of sugar on your tongue urgest you forward. You must see how long this path really is.");
+            }   
         }
     }
+} 
+

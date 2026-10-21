@@ -114,7 +114,7 @@ internal class Program
                         Console.WriteLine("Please enter Daddy Bear's name:");
                         dBearName = Console.ReadLine();
                     }
-                    Console.WriteLine("{0} You are now the {mBearName} and {dBearName}'s marriage counsellor. \n Good luck with your new job!");
+                    Console.WriteLine("You are now " + mBearName + " and " + dBearName + "'s marriage counsellor. \n Good luck with your new job!");
                 }
                 else if (Story1choice == 4)
                 {
@@ -181,7 +181,7 @@ internal class Program
                         Console.WriteLine("Do you want to go to prison?? Enter a new name!");
                         newName = Console.ReadLine();
                     }
-                    Console.WriteLine("{0} You are now known as {0}" + newName + ". Hopefully, the cops never find you.");
+                    Console.WriteLine("You are now known as " + newName + ". Hopefully, the cops never find you.");
                 }
             }
             /// Story 3 Options
@@ -235,7 +235,7 @@ internal class Program
                         Console.WriteLine("You need somewhere to hide! Where will you go?");
                         newLocation = Console.ReadLine();
                     }
-                    Console.WriteLine("{0} You are now hiding in" + newLocation + ". Hopefully, you can avoid the cousin!");
+                    Console.WriteLine("You are now hiding in " + newLocation + ". Hopefully, you can avoid the cousin!");
                 }
                 else if (Story3choice == 3)
                 {
@@ -311,7 +311,7 @@ internal class Program
                         Child2Name = Console.ReadLine();
                     }
                     Console.WriteLine("They mention they will follow their candy trail home. \n Wait didn't you eat that?");
-                    Console.WriteLine("{0} Oh dear!" + Child1Name + "and" + Child2Name + "have no other way home. Guess you now have to look after them!");
+                    Console.WriteLine("Oh dear! " + Child1Name + " and " + Child2Name + " have no other way home. Guess you now have to look after them!");
                     Console.WriteLine("Congratulations on becoming a parent!");
                 }
                 else if (Story4choice == 4)

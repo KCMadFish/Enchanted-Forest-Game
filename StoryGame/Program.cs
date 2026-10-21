@@ -96,11 +96,29 @@ internal class Program
                 }
                 else if (Story1choice == 3)
                 {
-                    Console.WriteLine("You chose option 3. You decide to further explore the house and come across a bedroom with three beds! \n You decide to have a nap and are awoken to the sound of bears coming home. They discover you and ask what you are doing. \n You counter asking why there are 3 beds. \n Turns out mommy and daddy bear are having marital issues. Yikes! You are now the bears marriage counsellor. \n Good luck with your new job!");
+                    Console.WriteLine("You chose option 3. You decide to further explore the house and come across a bedroom with three beds! \n You decide to have a nap and are awoken to the sound of bears coming home. They discover you and ask what you are doing. \n You counter asking why there are 3 beds. \n Turns out mommy and daddy bear are having marital issues. Yikes!They introduce themselves and explain their situation");
+                       Console.WriteLine("What is Mommy Bear's name?");
+                    string? mBearName = Console.ReadLine();
+
+                    while (string.IsNullOrWhiteSpace(mBearName))
+                    {
+                        Console.WriteLine("Please enter Mommy Bear's name:");
+                        mBearName = Console.ReadLine();
+                    }
+
+                    Console.WriteLine("And what is Daddy Bear's name?");
+                    string? dBearName = Console.ReadLine();
+
+                    while (string.IsNullOrWhiteSpace(dBearName))
+                    {
+                        Console.WriteLine("Please enter Daddy Bear's name:");
+                        dBearName = Console.ReadLine();
+                    }
+                    Console.WriteLine("{0} You are now the {mBearName} and {dBearName}'s marriage counsellor. \n Good luck with your new job!");
                 }
                 else if (Story1choice == 4)
                 {
-                    Console.WriteLine("You chose option 4. You have a seat at the table but do not touch anything further. You hear the door open. Three bears enter the house and are surprised to find you at their table but offer you some porridge. \n While everyone is eating you get to chatting with the bears. Mommy and Daddy bear are impressed with your respectfulness. They dedicde to adopt you! \n You're now a bear, I guess!");
+                    Console.WriteLine("You chose option 4. You have a seat at the table but do not touch anything further. You hear the door open. Three bears enter the house and are surprised to find you at their table but offer you some porridge. \n While everyone is eating you get to chatting with the bears. Mommy and Daddy bear are impressed with your respectfulness. They decide to adopt you! \n You're now a bear, I guess!");
                 }
             }
 
@@ -156,7 +174,14 @@ internal class Program
                 else if (Story2choice == 4)
                 {
                     Console.WriteLine("You chose option 4. While you are walking you come across a wolf! You hesitantly greet him and ask what he is up to. \n He lets you know that he is oh so hungry and he is going to get some ham! Who can fault a guy! You are also quite hungry since you skipped breakfast so you ask to come with him");
-                    Console.WriteLine("The wolf obliges you and you walk towards the straw house. You watch in confusion as the wolf blows the house down!\n He walks in and begins eating the live pig that is inside! \n You run away in horror. You are now an accessory to murder, you better change your name!");
+                    Console.WriteLine("The wolf obliges you and you walk towards the straw house. You watch in confusion as the wolf blows the house down!\n He walks in and begins eating the live pig that is inside! \n You run away in horror. You are now an accessory to murder, you better change your name! \n What will your new name be?");
+                    string? newName = Console.ReadLine();
+                    while (string.IsNullOrWhiteSpace(newName))
+                    {
+                        Console.WriteLine("Do you want to go to prison?? Enter a new name!");
+                        newName = Console.ReadLine();
+                    }
+                    Console.WriteLine("{0} You are now known as {0}" + newName + ". Hopefully, the cops never find you.");
                 }
             }
             /// Story 3 Options
@@ -201,7 +226,16 @@ internal class Program
                 {
                     Console.WriteLine("You chose option 2. She explains that she is waiting on a friend. You decide to sit down and wait with her, and she shares some muffins from her basket.");
 
-                    Console.WriteLine("Just when you decide it's time to get up and go, her friend joins her! He apologises for his lateness. He was dealing with his cousin, who was trying to blow a house down? You decide you better be on your way home before his cousin decides to blow your house down!");
+                    Console.WriteLine("Just when you decide it's time to get up and go, her friend joins her! He apologises for his lateness. He was dealing with his cousin, who was trying to blow a house down? And eat its inhabitants!?!? \n You decide you better be on your way before you encounter his cousin!");
+                    Console.WriteLine("Where will you go to hide?");
+                    string? newLocation = Console.ReadLine();
+
+                    while (string.IsNullOrWhiteSpace(newLocation))
+                    {
+                        Console.WriteLine("You need somewhere to hide! Where will you go?");
+                        newLocation = Console.ReadLine();
+                    }
+                    Console.WriteLine("{0} You are now hiding in" + newLocation + ". Hopefully, you can avoid the cousin!");
                 }
                 else if (Story3choice == 3)
                 {
@@ -259,7 +293,26 @@ internal class Program
                 else if (Story4choice == 3)
                 {
                     Console.WriteLine("You chose option 3. OMG! You burst into the house and see a witch holding two children hostage! You start fighting her off and knock her into a huge stew pot!");
-                    Console.WriteLine("The children thank you profusely. They mention they will follow their candy trail home. \n Wait didn't you eat that? \n  Oh dear! The children have no other way home. Guess you now have to look after them! \n Congratulations on becoming a parent!");
+                    Console.WriteLine("The children thank you profusely and introduce themselves. What is the first child's name?");
+                    string? Child1Name = Console.ReadLine();
+
+                    while (string.IsNullOrWhiteSpace(Child1Name))
+                    {
+                        Console.WriteLine("Please enter the first child's name:");
+                        Child1Name = Console.ReadLine();
+                    }
+
+                    Console.WriteLine("And what is the second child's name?");
+                    string? Child2Name = Console.ReadLine();
+
+                    while (string.IsNullOrWhiteSpace(Child2Name))
+                    {
+                        Console.WriteLine("Please enter the second child's name:");
+                        Child2Name = Console.ReadLine();
+                    }
+                    Console.WriteLine("They mention they will follow their candy trail home. \n Wait didn't you eat that?");
+                    Console.WriteLine("{0} Oh dear!" + Child1Name + "and" + Child2Name + "have no other way home. Guess you now have to look after them!");
+                    Console.WriteLine("Congratulations on becoming a parent!");
                 }
                 else if (Story4choice == 4)
                 {

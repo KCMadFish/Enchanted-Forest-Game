@@ -2,33 +2,50 @@
 using System.Text;
 
 namespace StoryGame;
-/// introduction to the game
 internal class Program
 {
+    static bool[] completedEndings - new bool[16];
     static void Main(string[] args)
     {
+        /// INTRODUCTION TO GAME
+       
         Console.WriteLine("Welcome to the Enchanted Forest!\n \n What is your name? ");
         var playerName = Console.ReadLine();
+
+        /// code makes sure they can't leaave blank or enter a space for their name
+        
         while (string.IsNullOrWhiteSpace(playerName))
         {
             Console.WriteLine("Please enter your name:");
             playerName = Console.ReadLine();
         }
+
         bool isPlaying = true;
         Console.WriteLine("Wow, what an interesting name! \n Behold the forest {0}!", playerName);
         Console.WriteLine("You decided to start the day off with an adventure!");
         while (isPlaying)
         {
+            if (AllEndingscomplete())
+            {
+                Console.WriteLine("Congratulations! You have completed all the endings! \n Please find another game to play!");
+                break;
+            }
+
             Console.WriteLine("You are standing on the edge of the forest. Many choices await you.");
             /// choices begin
 
-            Console.WriteLine("Options: \n1. You smell a delicious scent. In your haste for adventure you forgot to have breakfast \n 2. You notice a small, winding path to the left. A path is good! You can meet new people.\n3. You look straight ahead, there is no path, just tall trees. What's a little extra adventure? \n 4. You look down. What's this? There's candy at your feet! Who says no to free candy?!");
+            Console.WriteLine("Choose a path");
+            Console.WriteLine("1. You smell a delicious scent. In your haste for adventure you forgot to have breakfast (Goldilocks)" +PathStatus(1));
+            Console.WriteLine("2. You notice a small, winding path to the left. A path is good! You can meet new people. (3Pigs)" + PathStatus(2));
+            Console.WriteLine("3. You look straight ahead, there is no path, just tall trees. What's a little extra adventure? (RedHood)" + PathStatus(3));
+            Console.WriteLine("4. You look down. What's this? There's candy at your feet! Who says no to free candy?! (HnG)" + PathStatus(4));
+
             Console.WriteLine("Which option do you choose?");
 
 
             int choice = 0;
 
-            while (choice < 1 || choice > 4)
+            while (choice < 1 || choice > 4 || IsPathComplete(choice)
             {
                 Console.WriteLine("Please choose an option, choose between 1 and 4:");
 
@@ -50,12 +67,18 @@ internal class Program
                 {
                     Console.WriteLine("Please stop trying to break me! Please enter a number between 1 and 4.");
                 }
+                else if (IsPathComplete(choice))
+                {
+                    Console.WriteLine("You have already completed this path! Please choose another path.");
+                    choice = 0; // Reset choice to force the loop to continue
+                }   
             }
 
             /// Story 1 Options
 
             if (choice == 1)
             {
+                PlayGoldilocksStory();
                 Console.WriteLine("You chose option 1. Guess your hunger won! You follow the scent towards a lovely, little cottage. \n You notice its homely vibe with yellow painted walls and a great big oak door.");
                 Console.WriteLine("You knock on the door and receive no answer, but your knocking opens the door! \n Since you're super nosy, you decide to enter the home. \n Inside you find a kitchen with a wooden table in the middle. On the table are bowls of porridge.");
                 Console.WriteLine("What do you decide to do? You're actually really hungry! \n 1.1. Have a seat at the table and start eating the biggest bowl of porridge. What? You're super hungry \n 1.2. Decide you are very hungry but you sit down and eat the smallest bowl of porridge,surely no one will miss it? \n 1.3. Your curiosity wins over your hunger. You decide to explore the house further \n 1.4. You think you've intruded enough and want to meet the owners of the cottage. You have a seat at the table but do not touch anything further.");
@@ -126,6 +149,7 @@ internal class Program
 
             else if (choice == 2)
             {
+                Play3PigsStory();
                 Console.WriteLine("You chose option 2. You begin on the winding path. It is quite a peaceful trail, with the sound of birdsong in the air. In the distance you see three little homes and journey towards them. \n You notice that the homes are made of different material. The one directly in front of you is made of straw, the next of sticks, and the furthest one is made of bricks. \n What do you decide to do?");
                 Console.WriteLine("2.1.You decide to approach the home closest to you knock on the door.It's not much of a knock considering it's straw but the door opens anyways \n 2.2. You walk ahead, ignoring the straw home, and approach the door of the next home \n 2.3.You walk a bit further wanting to stretch your legs.While walking you see a wolf outside of the straw house.Maybe he lives there ? \n 2.4.You don't want to visit anyone's house, let's just walk around a little and see what we find!");
 
@@ -187,6 +211,7 @@ internal class Program
             /// Story 3 Options
             else if (choice == 3)
             {
+                PlayRedHoodStory();
                 Console.WriteLine("You chose option 3. This part of the forest is a little spooky, but you are brave! While walking you hear some whistling ahead. You decide to follow it and come across a girl in a red hood. She says she is off to her grandmother's house. You notice she keeps looking over her shoulder.");
                 Console.WriteLine("What do you choose to do? \n 3.1.You offer to walk with her to her grandmother's house \n 3.2. You ask her why she keeps looking over her shoulder \n 3.3. You decide to part ways with her. \n 3.4. You decide to look around and try to spot what she is looking for.");
 
@@ -252,6 +277,7 @@ internal class Program
             /// Story 4 Options
             else if (choice == 4)
             {
+                PlayHnGStory();
                 Console.WriteLine("You chose option 4. Dang, eating sweets off the floor? I mean go off I guess! You follow the trail of candy, eating some while putting the rest in your pockets. \n The burst of sugar on your tongue urges you forward. You must see how long this path really is.");
                 Console.WriteLine("You continue following the trail, stuffing your pockets until they are bursting at the seams. Towards the end of the trail you come across an entire house of candy! \n What do you choose to do?");
                 Console.WriteLine("4.1. A house of candy! You must have a taste! You begin gnawing on a gingerbread windowsill. \n 4.2. Wow! You marvel at the unique house but decide you've had enough sugar for today. \n 4.3. You hear screams coming from inside the house. What is that? \n 4.4. You decide to knock on the door");
@@ -320,7 +346,39 @@ internal class Program
                     Console.WriteLine("Before you can think further, you are being pushed into the pot! \n You are now a stew ingredient. \n At least all the candy in your pockets is going to give the stew a nice taste");
                 }
             }
+            if (AllEndinsCompllete())
+            {
+                continue;
+            }
+                Console.WriteLine("What do you want to do? \n 1. Play another story \n 2. Exit");
+               int replayChoice = 0;
+            while (replayChoice < 1 || replayChoice > 2)
+            {
+                Console.WriteLine("Please choose an option, choose between 1 and 2:");
+                string? input = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    Console.WriteLine("Please enter a number not a space!");
+                    continue;
+                }
+                if (!int.TryParse(input, out replayChoice))
+                {
+                    Console.WriteLine("That's not valid! Please enter a whole number.");
+                    continue;
+                }
+                if (replayChoice < 1 || replayChoice > 2)
+                {
+                    Console.WriteLine("Please stop trying to break me! Please enter a number between 1 and 2.");
+                }
+            }
+            if (replayChoice == 2)
+            {
+                isPlaying = false;
+            }
+            Console.WriteLine("Thank you for having an adventure! Good luck on your next one, goodbye!" );
+        }   
         }
+
     }
 }
 

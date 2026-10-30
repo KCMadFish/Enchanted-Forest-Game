@@ -97,7 +97,10 @@ internal class Program
             if (AllEndingsComplete())
             {
                 Console.WriteLine("\nCongratulations! You have completed all the endings! \n Please find another game to play!");
-                break;
+                Console.WriteLine("\n Press any key to exit the game."); /// added this because when I got to the end of the game it just completely exited before I could read the end of the story
+                Console.ReadKey();
+                break;  
+
             }
             Console.WriteLine("\n What do you want to do? \n 1. Play another story \n 2. Exit");
             int replayChoice = 0;
